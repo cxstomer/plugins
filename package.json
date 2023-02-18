@@ -1,0 +1,21 @@
+{
+  "name": "@cxstomer/plugins",
+  "version": "1.0.0",
+  "description": "Open-source plugins for the web and WordPress",
+  "author": {
+    "name": "Cxstomer",
+    "email": "dev@cxstomer.com",
+    "url": "https://cxstomer.com/"
+  },
+  "homepage": "https://github.com/cxstomer/plugins",
+  "license": "MIT",
+  "keywords": [
+    "Open-source",
+    "WordPress",
+    "plugin",
+    "widget"
+  ],
+  "workspaces": [
+    "./packages/*"
+  ]
+}

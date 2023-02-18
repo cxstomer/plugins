@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+    <title>Widget Demo</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <h1>Widget Demo</h1>
+    <h2>This html is only intended to demo the widget</h2>
+    <h3 style="color: red">DO NOT DEPLOY THIS FILE!</h3>
+    <p>
+      The following snippet is embedded on this page. Include this snippet to install the widget. It will be installed
+      as the last div inside of body. Use this for a static widget, styles can be set via the id, which is passed in the
+      snippet below as `openGorgiasFromHash`.
+    </p>
+    <code>
+      <pre>
+&lt;script&gt;
+    (function (w, d, o, f, js, fjs) {
+        w[o] = typeof w[o] === "function" ? w[0] : function () { (w[o].q = w[o].q || []).push(arguments) };
+        js = d.createElement('script'), fjs = d.getElementsByTagName('script')[0];
+        js.id = `${o}-script`; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, '<%= options.fn %>', './<%= options.filename %>.js'));
+    <%= options.fn %>('init', { hash: "chat" });
+&lt;/script&gt;
+        </pre
+      >
+    </code>
+
+    <p>
+      To fire an event that is handled inside widget, first nav to <a href="#chat">#chat</a>, then click
+      <a href="javascript:;" onclick="<%= options.fn %>('event', 'loadchat')">here to send</a>.
+    </p>
+
+    <!--Gorgias Chat Widget Start-->
+    <script
+      id="gorgias-chat-widget-install-v2"
+      src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=<%= options.gorgiasAppId %>"
+    ></script>
+    <!--Gorgias Chat Widget End-->
+    <!-- The snippet for the widget: -->
+    <script>
+      (function (w, d, o, f, js, fjs) {
+        w[o] =
+          typeof w[0] === "function"
+            ? w[o]
+            : function () {
+                (w[o].q = w[o].q || []).push(arguments);
+              };
+        (js = d.createElement("script")), (fjs = d.getElementsByTagName("script")[0]);
+        js.id = `${o}-script`;
+        js.src = f;
+        js.async = 1;
+        fjs.parentNode.insertBefore(js, fjs);
+      })(window, document, "<%= options.fn %>", "./<%= options.filename %>.js");
+      <%= options.fn %>("init", { hash: "chat", debug: <%= options.debug %> });
+    </script>
+  </body>
+</html>
